@@ -7,23 +7,26 @@ import junit.framework.TestCase;
  */
 public class ExamGradesTest extends TestCase {
   
-  /**
-   * A test method.
-   * (Replace "X" with a name describing the test.  You may write as
-   * many "testSomething" methods in this class as you wish, and each
-   * one will be called when running JUnit over this class.)
-   */
-  public void testCreateExamGrades() {
-    double grades[] = new double[10];
+  public void testHighestFirst() {
     
-    for (int i = 0; i < 10; i++) {
-      grades[i] = 100 - i;
-    }
+    ExamGrades g = new ExamGrades(100.0, 80.0, 99.9, 75.4, 89.5, 76.9, 77.4, 85.3, 65.5, 84.3);
     
-    ExamGrades g = new ExamGrades(grades);
+    assertEquals(100.0, g.highest());
+  }
+  
+  public void testHighestLast() {
     
-    assertEquals(100.0, g.grades[0]);
-    assertEquals(91.0, g.grades[9]);
+    ExamGrades g = new ExamGrades(80.0, 99.9, 75.4, 89.5, 76.9, 77.4, 85.3, 65.5, 84.3, 100.0);
+    
+    assertEquals(100.0, g.highest());
+  }
+  
+  public void testHighestMid() {
+
+    
+    ExamGrades g = new ExamGrades(80.0, 99.9, 100.0, 75.4, 89.5, 76.9, 77.4, 85.3, 65.5, 84.3);
+    
+    assertEquals(100.0, g.highest());
   }
   
 }
